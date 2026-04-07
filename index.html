@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mike Ashley Cedric Gill – Software Engineer</title>
-    <meta
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mike Ashley Cedric Gill – Software Engineer </title>
+   <meta
       name="description"
       content="Portfolio of Mike Ashley Cedric Gill, a Full Stack Developer specializing in React, Node.js, and AI projects."
     />
@@ -15,14 +15,11 @@
     />
 
     <meta name="author" content="Mike Ashley Cedric Gill" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-          *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #f9f7f4;
@@ -51,7 +48,7 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(249,247,244,0.92);
+      background: rgba(249,247,244,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 2rem;
@@ -64,6 +61,7 @@
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.02em;
+      z-index: 101;
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
@@ -75,6 +73,72 @@
       letter-spacing: 0.01em;
     }
     .nav-links a:hover { color: var(--text); }
+
+    /* ─── HAMBURGER BUTTON ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 101;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .hamburger:hover { background: var(--accent-light); }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+      transform-origin: center;
+    }
+    .hamburger span:nth-child(1) { width: 22px; }
+    .hamburger span:nth-child(2) { width: 16px; }
+    .hamburger span:nth-child(3) { width: 22px; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 22px; }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 22px; }
+
+    /* ─── MOBILE MENU DRAWER ─── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: rgba(249,247,244,0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      padding: 0.5rem 1.5rem 1.5rem;
+      flex-direction: column;
+      transform: translateY(-8px);
+      opacity: 0;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .mobile-menu.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-menu a {
+      display: block;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--accent); }
 
     /* ─── SECTIONS ─── */
     section { padding: 5rem 2rem; }
@@ -105,82 +169,46 @@
     }
     .hero-content { max-width: 780px; margin: 0 auto; width: 100%; }
     .hero-greeting {
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.1s forwards;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 1rem;
+      opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
     }
     .hero-name {
       font-family: var(--serif);
       font-size: clamp(2.8rem, 7vw, 5rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.25rem;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.2s forwards;
+      line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.25rem;
+      opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
     }
     .hero-role {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.3s forwards;
+      font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.6s 0.3s forwards;
     }
     .hero-role strong { color: var(--text); font-weight: 600; }
     .hero-desc {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 560px;
-      margin-bottom: 2.5rem;
-      line-height: 1.8;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.4s forwards;
+      font-size: 1rem; color: var(--muted); max-width: 560px;
+      margin-bottom: 2.5rem; line-height: 1.8;
+      opacity: 0; animation: fadeUp 0.6s 0.4s forwards;
     }
     .hero-btns {
       display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.5s forwards;
+      opacity: 0; animation: fadeUp 0.6s 0.5s forwards;
     }
     .btn {
-      display: inline-block;
-      padding: 0.7rem 1.5rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
+      display: inline-block; padding: 0.7rem 1.5rem; border-radius: 6px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      transition: all 0.2s; cursor: pointer; border: none; text-align: center;
     }
-    .btn-primary {
-      background: var(--text);
-      color: #fff;
-    }
+    .btn-primary { background: var(--text); color: #fff; }
     .btn-primary:hover { background: #333; transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1.5px solid var(--border);
-    }
+    .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
     .btn-outline:hover { border-color: var(--text); transform: translateY(-1px); }
 
     .hero-stats {
-      margin-top: 4rem;
-      display: flex; gap: 3rem;
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.6s forwards;
+      margin-top: 4rem; display: flex; gap: 3rem; flex-wrap: wrap;
+      border-top: 1px solid var(--border); padding-top: 2rem;
+      opacity: 0; animation: fadeUp 0.6s 0.6s forwards;
     }
-    .stat-num {
-      font-family: var(--serif);
-      font-size: 2rem;
-      letter-spacing: -0.03em;
-    }
+    .stat-num { font-family: var(--serif); font-size: 2rem; letter-spacing: -0.03em; }
     .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
 
     @keyframes fadeUp {
@@ -190,12 +218,7 @@
 
     /* ─── ABOUT ─── */
     #about { border-bottom: 1px solid var(--border); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
     .about-text p { color: var(--muted); margin-bottom: 1rem; line-height: 1.8; font-size: 0.97rem; }
     .about-meta { display: flex; flex-direction: column; gap: 1.2rem; }
     .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
@@ -206,18 +229,10 @@
 
     /* ─── SKILLS ─── */
     #skills { border-bottom: 1px solid var(--border); }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 1rem;
-      margin-top: 2.5rem;
-    }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; margin-top: 2.5rem; }
     .skill-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.2rem 1rem;
-      transition: border-color 0.2s, transform 0.2s;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.2rem 1rem; transition: border-color 0.2s, transform 0.2s;
     }
     .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); }
     .skill-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
@@ -227,27 +242,14 @@
     /* ─── PROJECTS ─── */
     #projects { border-bottom: 1px solid var(--border); }
     .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-top: 1.5rem;
-      transition: border-color 0.2s, transform 0.2s;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 2rem; margin-top: 1.5rem; transition: border-color 0.2s, transform 0.2s;
     }
     .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .project-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
     .project-name { font-family: var(--serif); font-size: 1.4rem; letter-spacing: -0.02em; }
     .project-org { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
     .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
-    .tag {
-      background: var(--accent-light);
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      letter-spacing: 0.02em;
-    }
+    .tag { background: var(--accent-light); color: var(--accent); font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.65rem; border-radius: 20px; }
     .project-desc { color: var(--muted); font-size: 0.95rem; margin-top: 1rem; line-height: 1.8; }
     .project-link { display: inline-block; margin-top: 1.25rem; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-decoration: none; }
     .project-link:hover { text-decoration: underline; }
@@ -256,18 +258,12 @@
     #resume { border-bottom: 1px solid var(--border); }
     .resume-section { margin-bottom: 3rem; }
     .resume-section-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
     }
     .resume-item { display: flex; gap: 1.5rem; margin-bottom: 1.8rem; }
-    .resume-year { font-size: 0.82rem; color: var(--muted); min-width: 80px; padding-top: 0.15rem; white-space: nowrap; }
-    .resume-body {}
+    .resume-year { font-size: 0.82rem; color: var(--muted); min-width: 90px; padding-top: 0.15rem; white-space: nowrap; }
     .resume-title { font-weight: 600; font-size: 1rem; }
     .resume-place { font-size: 0.88rem; color: var(--muted); margin-top: 0.1rem; }
     .resume-desc { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.7; }
@@ -277,493 +273,393 @@
     #blog { border-bottom: 1px solid var(--border); }
     .blog-grid { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
     .blog-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      transition: border-color 0.2s, transform 0.2s;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.5rem; text-decoration: none; color: inherit;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; transition: border-color 0.2s, transform 0.2s;
     }
     .blog-card:hover { border-color: var(--accent); transform: translateX(4px); }
-    .blog-card-left {}
     .blog-card-date { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.35rem; }
     .blog-card-title { font-weight: 600; font-size: 1rem; }
     .blog-card-excerpt { font-size: 0.88rem; color: var(--muted); margin-top: 0.3rem; }
     .blog-card-tag {
-      background: var(--accent-light);
-      color: var(--accent);
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      white-space: nowrap;
+      background: var(--accent-light); color: var(--accent); font-size: 0.72rem;
+      font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 20px;
+      white-space: nowrap; flex-shrink: 0;
     }
 
     /* ─── CONTACT ─── */
-    #contact {}
     .contact-intro { color: var(--muted); margin-bottom: 2.5rem; max-width: 500px; font-size: 0.97rem; line-height: 1.8; }
     .contact-links { display: flex; flex-direction: column; gap: 1rem; }
     .contact-link {
-      display: flex; align-items: center; gap: 1rem;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      font-size: 0.95rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      display: flex; align-items: center; gap: 1rem; text-decoration: none;
+      color: var(--text); font-weight: 500; font-size: 0.95rem;
+      padding: 1rem 1.25rem; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 10px;
       transition: border-color 0.2s, transform 0.2s;
     }
     .contact-link:hover { border-color: var(--accent); transform: translateX(4px); color: var(--accent); }
-    .contact-icon { font-size: 1.1rem; width: 28px; text-align: center; }
-    .contact-label { font-size: 0.78rem; color: var(--muted); font-weight: 400; margin-left: auto; }
+    .contact-icon { font-size: 1.1rem; width: 28px; text-align: center; flex-shrink: 0; }
+    .contact-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .contact-label { font-size: 0.78rem; color: var(--muted); font-weight: 400; margin-left: auto; flex-shrink: 0; }
 
     /* ─── FOOTER ─── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--muted);
+      border-top: 1px solid var(--border); padding: 2rem;
+      text-align: center; font-size: 0.82rem; color: var(--muted);
     }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 640px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 1.5rem; }
-      .nav-links { gap: 1rem; }
-      .nav-links a { font-size: 0.8rem; }
+    /* ─── RESPONSIVE: TABLET ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+
+      section { padding: 3.5rem 1.25rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      .skills-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+
+      .project-card { padding: 1.25rem; }
+
+      .resume-item { flex-direction: column; gap: 0.25rem; }
+      .resume-year {
+        min-width: unset; color: var(--accent);
+        font-weight: 600; font-size: 0.78rem;
+        letter-spacing: 0.05em; text-transform: uppercase;
+      }
+
+      .blog-card { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .blog-card:hover { transform: translateY(-2px); }
+
+      .hero-btns { flex-direction: column; }
+      .btn { width: 100%; }
+
+      .contact-label { display: none; }
     }
 
-    </style>
-  </head>
-  <body>
-    <!-- NAV -->
-    <nav>
-      <a href="#home" class="nav-logo">Mike · Gill</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    /* ─── RESPONSIVE: MOBILE ─── */
+    @media (max-width: 480px) {
+      nav { padding: 0 1.25rem; }
+      .mobile-menu { padding: 0.5rem 1.25rem 1.25rem; }
+      .hero-stats { gap: 1.25rem; }
+      .stat-num { font-size: 1.6rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .project-tags { gap: 0.4rem; }
+      footer { padding: 1.5rem 1rem; font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body>
 
-    <!-- HERO -->
-    <section id="home">
-      <div class="hero-content container">
-        <p class="hero-greeting">Hello, I'm</p>
-        <h1 class="hero-name">Mike Ashley<br />Cedric Gill</h1>
-        <p class="hero-role">
-          Student Research Assistant at
-          <strong>TIB · Leibniz Universität Hannover</strong>
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">Mike Ashley Cedric Gill</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about"    onclick="closeMenu()">About</a>
+  <a href="#skills"   onclick="closeMenu()">Skills</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#resume"   onclick="closeMenu()">Resume</a>
+  <a href="#blog"     onclick="closeMenu()">Blog</a>
+  <a href="#contact"  onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-content container">
+    <p class="hero-greeting">Hello, I'm</p>
+    <h1 class="hero-name">Mike Ashley Cedric<br>Gill</h1>
+    <p class="hero-role">
+      Student Research Assistant at <strong>TIB · Leibniz Universität Hannover</strong>
+    </p>
+    <p class="hero-desc">
+      Software Engineer with 6+ years of industry experience. Specialising in full-stack development
+      and AI research — currently exploring LLMs, RAG systems, and intelligent applications.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      <a href="#resume" class="btn btn-outline">View Resume</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">IBM</div>
+        <div class="stat-label">Former Employer</div>
+      </div>
+      <div>
+        <div class="stat-num">MSc</div>
+        <div class="stat-label">CS · AI Specialisation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Engineer. Dad.<br><em>F1 Enthusiast.</em></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I am a Software Engineer with over six years of industry experience, including my tenure
+          at IBM, where I contributed to building scalable and reliable software solutions. I specialise
+          in full-stack development using the MERN stack, with a strong focus on designing efficient,
+          user-centric applications.
         </p>
-        <p class="hero-desc">
-          Software Engineer with 6+ years of industry experience. Specialising
-          in full-stack development and AI research — currently exploring LLMs,
-          RAG systems, and intelligent applications.
+        <p>
+          Currently, I am pursuing a Master's degree in Computer Science with a specialisation in
+          Artificial Intelligence, expanding my expertise in modern AI systems. My interests include
+          working with open-source large language models (LLMs), retrieval-augmented generation (RAG),
+          and developing intelligent, data-driven applications.
         </p>
-        <div class="hero-btns">
-          <a href="#contact" class="btn btn-primary">Get in Touch</a>
-          <a href="#resume" class="btn btn-outline">View Resume</a>
-        </div>
-        <div class="hero-stats">
-          <div>
-            <div class="stat-num">6+</div>
-            <div class="stat-label">Years of Experience</div>
-          </div>
-          <div>
-            <div class="stat-num">IBM</div>
-            <div class="stat-label">Former Employer</div>
-          </div>
-          <div>
-            <div class="stat-num">MSc</div>
-            <div class="stat-label">CS · AI Specialisation</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container">
-        <p class="section-label">About Me</p>
-        <h2 class="section-title">
-          Engineer. Dad.<br /><em>F1 Enthusiast.</em>
-        </h2>
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-              I am a Software Engineer with over six years of industry
-              experience, including my tenure at IBM, where I contributed to
-              building scalable and reliable software solutions. I specialise in
-              full-stack development using the MERN stack, with a strong focus
-              on designing efficient, user-centric applications.
-            </p>
-            <p>
-              Currently, I am pursuing a Master's degree in Computer Science
-              with a specialisation in Artificial Intelligence, where I am
-              expanding my expertise in modern AI systems. My interests include
-              working with open-source large language models (LLMs),
-              retrieval-augmented generation (RAG), and developing intelligent,
-              data-driven applications.
-            </p>
-            <p>
-              I am passionate about bridging the gap between traditional
-              software engineering and cutting-edge AI, and I continuously seek
-              opportunities to build impactful, innovative solutions.
-            </p>
-          </div>
-          <div class="about-meta">
-            <div class="meta-item">
-              <span class="meta-key">Location</span>
-              <span class="meta-val">Hannover, Germany 🇩🇪</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-key">Current Role</span>
-              <span class="meta-val">Student Research Assistant, TIB</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-key">Education</span>
-              <span class="meta-val"
-                >MSc Computer Science (AI), Leibniz Universität Hannover</span
-              >
-            </div>
-            <div class="meta-item">
-              <span class="meta-key">Specialisation</span>
-              <span class="meta-val">Full-Stack Development · LLMs · RAG</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-key">Email</span>
-              <span class="meta-val"
-                ><a href="mailto:mike.ashley.cedric@gmail.com"
-                  >mike.ashley.cedric@gmail.com</a
-                ></span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills">
-      <div class="container">
-        <p class="section-label">Skills & Technologies</p>
-        <h2 class="section-title">What I work with</h2>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-icon">⚛️</div>
-            <div class="skill-name">React</div>
-            <div class="skill-cat">Frontend</div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-icon">🟢</div>
-            <div class="skill-name">Node.js</div>
-            <div class="skill-cat">Backend</div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-icon">🗄️</div>
-            <div class="skill-name">SQL</div>
-            <div class="skill-cat">Databases</div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-icon">🍃</div>
-            <div class="skill-name">NoSQL</div>
-            <div class="skill-cat">Databases</div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-icon">☁️</div>
-            <div class="skill-name">AWS</div>
-            <div class="skill-cat">Cloud</div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-icon">🔷</div>
-            <div class="skill-name">Azure</div>
-            <div class="skill-cat">Cloud</div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-icon">🐳</div>
-            <div class="skill-name">Docker</div>
-            <div class="skill-cat">DevOps</div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-icon">🐍</div>
-            <div class="skill-name">Python</div>
-            <div class="skill-cat">AI / Scripting</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="container">
-        <p class="section-label">Featured Projects</p>
-        <h2 class="section-title">Things I've built</h2>
-
-        <div class="project-card">
-          <div class="project-header">
-            <div>
-              <div class="project-name">YESciEval</div>
-              <div class="project-org">TIB · Leibniz Universität Hannover</div>
-            </div>
-          </div>
-          <div class="project-tags">
-            <span class="tag">LLMs</span>
-            <span class="tag">RAG</span>
-            <span class="tag">Python</span>
-            <span class="tag">NLP</span>
-            <span class="tag">AI Research</span>
-          </div>
-          <p class="project-desc">
-            A research project focused on the evaluation of large language
-            models in scientific question-answering tasks. YESciEval
-            investigates how LLMs handle domain-specific knowledge retrieval and
-            generation, contributing to the broader field of retrieval-augmented
-            generation and AI benchmarking in scientific contexts.
-          </p>
-          <a href="#" class="project-link">View Project →</a>
-        </div>
-    </section>
-
-    <!-- RESUME -->
-    <section id="resume">
-      <div class="container">
-        <p class="section-label">Resume</p>
-        <h2 class="section-title">Experience &amp; Education</h2>
-
-        <div class="resume-section">
-          <div class="resume-section-title">Work Experience</div>
-
-          <div class="resume-item">
-            <div class="resume-year">2024 – Now</div>
-            <div class="resume-body">
-              <div class="resume-title">Student Research Assistant</div>
-              <div class="resume-place">
-                TIB – Leibniz Information Centre for Science and Technology ·
-                Hannover, DE
-              </div>
-              <div class="resume-desc">
-                Conducting research in the intersection of AI and information
-                retrieval. Working on LLM evaluation frameworks,
-                retrieval-augmented generation pipelines, and scientific
-                question-answering systems as part of the YESciEval project.
-              </div>
-            </div>
-          </div>
-
-          <div class="resume-item">
-            <div class="resume-year">2017 – 2023</div>
-            <div class="resume-body">
-              <div class="resume-title">Software Engineer</div>
-              <div class="resume-place">IBM · Remote / On-site</div>
-              <div class="resume-desc">
-                Contributed to the design and development of scalable,
-                enterprise-grade software solutions across multiple client
-                engagements. Worked primarily with full-stack technologies
-                including Node.js, React, SQL/NoSQL databases, and cloud
-                platforms (AWS, Azure). Participated in agile development
-                workflows, code reviews, and cross-functional team
-                collaboration.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="resume-section">
-          <div class="resume-section-title">Education</div>
-
-          <div class="resume-item">
-            <div class="resume-year">2023 – Now</div>
-            <div class="resume-body">
-              <div class="resume-title">
-                MSc Computer Science – Artificial Intelligence
-              </div>
-              <div class="resume-place">
-                Leibniz Universität Hannover · Hannover, DE
-              </div>
-              <div class="resume-desc">
-                Specialising in AI with coursework in machine learning, deep
-                learning, natural language processing, and intelligent systems.
-                Research focus on open-source LLMs and RAG architectures.
-              </div>
-            </div>
-          </div>
-
-          <div class="resume-item">
-            <div class="resume-year">2013 – 2017</div>
-            <div class="resume-body">
-              <div class="resume-title">BSc Computer Science</div>
-              <div class="resume-place">
-                SZABIST · Karachi, Pakistan
-              </div>
-              <div class="resume-desc">
-                Foundation in software engineering, algorithms, data structures,
-                and systems programming.
-                <em>(SZABIST.)</em>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="resume-section">
-          <div class="resume-section-title">Certifications</div>
-
-          <div class="resume-item">
-            <div class="resume-year">2022</div>
-            <div class="resume-body">
-              <div class="resume-title">
-                AWS Certified Developer – Associate
-              </div>
-              <div class="resume-place">Amazon Web Services</div>
-            </div>
-          </div>
-
-          <div class="resume-item">
-            <div class="resume-year">2021</div>
-            <div class="resume-body">
-              <div class="resume-title">
-                Microsoft Azure Fundamentals (AZ-900)
-              </div>
-              <div class="resume-place">Microsoft</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="resume-cta">
-            <a href="./assets/CV_MikeAshleyCedric.pdf" target="_blank" class="btn btn-outline">Download Full CV → </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- BLOG -->
-    <section id="blog">
-      <div class="container">
-        <p class="section-label">Blog</p>
-        <h2 class="section-title">Thoughts &amp; Writing</h2>
-        <div class="blog-grid">
-          <a href="#" class="blog-card">
-            <div class="blog-card-left">
-              <div class="blog-card-date">Coming Soon</div>
-              <div class="blog-card-title">
-                Getting Started with Retrieval-Augmented Generation (RAG)
-              </div>
-              <div class="blog-card-excerpt">
-                A practical introduction to building RAG pipelines with
-                open-source LLMs.
-              </div>
-            </div>
-            <span class="blog-card-tag">AI</span>
-          </a>
-
-          <!-- <a href="#" class="blog-card">
-            <div class="blog-card-left">
-              <div class="blog-card-date">Coming Soon</div>
-              <div class="blog-card-title">
-                Scaling Node.js Applications: Lessons from IBM
-              </div>
-              <div class="blog-card-excerpt">
-                What enterprise-scale engineering taught me about performance
-                and reliability.
-              </div>
-            </div>
-            <span class="blog-card-tag">Backend</span>
-          </a> -->
-
-          <!-- <a href="#" class="blog-card">
-            <div class="blog-card-left">
-              <div class="blog-card-date">Coming Soon</div>
-              <div class="blog-card-title">
-                Why Every Engineer Should Understand LLM Evaluation
-              </div>
-              <div class="blog-card-excerpt">
-                Benchmarking AI systems is harder than it looks — here's what
-                I've learned.
-              </div>
-            </div>
-            <span class="blog-card-tag">Research</span>
-          </a> -->
-
-          <!-- <a href="#" class="blog-card">
-            <div class="blog-card-left">
-              <div class="blog-card-date">Coming Soon</div>
-              <div class="blog-card-title">
-                From Industry to Academia: My Transition into AI Research
-              </div>
-              <div class="blog-card-excerpt">
-                Reflections on switching from a software engineering career to a
-                research role.
-              </div>
-            </div>
-            <span class="blog-card-tag">Career</span>
-          </a> -->
-
-          <!-- <a href="#" class="blog-card">
-            <div class="blog-card-left">
-              <div class="blog-card-date">Coming Soon</div>
-              <div class="blog-card-title">
-                Docker for Full-Stack Developers: A Practical Guide
-              </div>
-              <div class="blog-card-excerpt">
-                Containerising MERN applications from development to production.
-              </div>
-            </div>
-            <span class="blog-card-tag">DevOps</span>
-          </a> -->
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="container">
-        <p class="section-label">Contact</p>
-        <h2 class="section-title">Let's work together</h2>
-        <p class="contact-intro">
-          Whether you want to discuss a project, a research collaboration, or
-          just want to say hello — feel free to reach out. I'm always happy to
-          connect.
+        <p>
+          I am passionate about bridging the gap between traditional software engineering and
+          cutting-edge AI, and I continuously seek opportunities to build impactful, innovative solutions.
         </p>
-        <div class="contact-links">
-          <a href="mailto:mike.ashley.cedric@gmail.com" class="contact-link">
-            <span class="contact-icon">✉️</span>
-            mike.ashley.cedric@gmail.com
-            <span class="contact-label">Email</span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/mike-ashley-cedric/"
-            target="_blank"
-            class="contact-link"
-          >
-            <span class="contact-icon">💼</span>
-            linkedin.com/in/mike-ashley-cedric/
-            <span class="contact-label">LinkedIn</span>
-          </a>
-          <a
-            href="https://github.com/MikeACedric"
-            target="_blank"
-            class="contact-link"
-          >
-            <span class="contact-icon">🐙</span>
-            github.com/MikeACedric
-            <span class="contact-label">GitHub</span>
-          </a>
+      </div>
+      <div class="about-meta">
+        <div class="meta-item">
+          <span class="meta-key">Location</span>
+          <span class="meta-val">Hannover, Germany 🇩🇪</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Current Role</span>
+          <span class="meta-val">Student Research Assistant, TIB</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Education</span>
+          <span class="meta-val">MSc Computer Science (AI), Leibniz Universität Hannover</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Specialisation</span>
+          <span class="meta-val">Full-Stack · LLMs · RAG</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Email</span>
+          <span class="meta-val"><a href="mailto:mike.ashley.cedric@gmail.com">mike.ashley.cedric@gmail.com</a></span>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-      <p>Mike Ashley Cedric Gill &nbsp;·&nbsp; © 2026. All rights reserved.</p>
-    </footer>
-  </body>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Skills & Technologies</p>
+    <h2 class="section-title">What I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">⚛️</div><div class="skill-name">React</div><div class="skill-cat">Frontend</div></div>
+      <div class="skill-card"><div class="skill-icon">🟢</div><div class="skill-name">Node.js</div><div class="skill-cat">Backend</div></div>
+      <div class="skill-card"><div class="skill-icon">🗄️</div><div class="skill-name">SQL</div><div class="skill-cat">Databases</div></div>
+      <div class="skill-card"><div class="skill-icon">🍃</div><div class="skill-name">NoSQL</div><div class="skill-cat">Databases</div></div>
+      <div class="skill-card"><div class="skill-icon">☁️</div><div class="skill-name">AWS</div><div class="skill-cat">Cloud</div></div>
+      <div class="skill-card"><div class="skill-icon">🔷</div><div class="skill-name">Azure</div><div class="skill-cat">Cloud</div></div>
+      <div class="skill-card"><div class="skill-icon">🐳</div><div class="skill-name">Docker</div><div class="skill-cat">DevOps</div></div>
+      <div class="skill-card"><div class="skill-icon">🐍</div><div class="skill-name">Python</div><div class="skill-cat">AI / Scripting</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Featured Projects</p>
+    <h2 class="section-title">Things I've built</h2>
+
+    <div class="project-card">
+      <div class="project-name">YESciEval</div>
+      <div class="project-org">TIB · Leibniz Universität Hannover</div>
+      <div class="project-tags">
+        <span class="tag">LLMs</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Python</span>
+        <span class="tag">NLP</span>
+        <span class="tag">AI Research</span>
+      </div>
+      <p class="project-desc">
+        A research project focused on the evaluation of large language models in scientific
+        question-answering tasks. YESciEval investigates how LLMs handle domain-specific knowledge
+        retrieval and generation, contributing to the broader field of retrieval-augmented generation
+        and AI benchmarking in scientific contexts.
+      </p>
+      <a href="#" class="project-link">View Project →</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="container">
+    <p class="section-label">Resume</p>
+    <h2 class="section-title">Experience &amp; Education</h2>
+
+    <div class="resume-section">
+      <div class="resume-section-title">Work Experience</div>
+      <div class="resume-item">
+        <div class="resume-year">2024 – Now</div>
+        <div class="resume-body">
+          <div class="resume-title">Student Research Assistant</div>
+          <div class="resume-place">TIB – Leibniz Information Centre for Science and Technology · Hannover, DE</div>
+          <div class="resume-desc">Conducting research at the intersection of AI and information retrieval. Working on LLM evaluation frameworks, retrieval-augmented generation pipelines, and scientific question-answering systems as part of the YESciEval project.</div>
+        </div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-year">2017 – 2023</div>
+        <div class="resume-body">
+          <div class="resume-title">Software Engineer</div>
+          <div class="resume-place">IBM · Remote / On-site</div>
+          <div class="resume-desc">Contributed to the design and development of scalable, enterprise-grade software solutions across multiple client engagements. Worked with Node.js, React, SQL/NoSQL databases, and cloud platforms (AWS, Azure). Participated in agile development workflows, code reviews, and cross-functional collaboration.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-section">
+      <div class="resume-section-title">Education</div>
+      <div class="resume-item">
+        <div class="resume-year">2024 – Now</div>
+        <div class="resume-body">
+          <div class="resume-title">MSc Computer Science – Artificial Intelligence</div>
+          <div class="resume-place">Leibniz Universität Hannover · Hannover, DE</div>
+          <div class="resume-desc">Specialising in AI with coursework in machine learning, deep learning, NLP, and intelligent systems. Research focus on open-source LLMs and RAG architectures.</div>
+        </div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-year">2013 – 2017</div>
+        <div class="resume-body">
+          <div class="resume-title">BSc Computer Science</div>
+          <div class="resume-place">SZABIST · Karachi, Pakistan</div>
+          <div class="resume-desc">Foundation in software engineering, algorithms, data structures, and systems programming. <em> SZABIST </em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-section">
+      <div class="resume-section-title">Certifications</div>
+      <div class="resume-item">
+        <div class="resume-year">2022</div>
+        <div class="resume-body">
+          <div class="resume-title">AWS Certified Developer – Associate</div>
+          <div class="resume-place">Amazon Web Services</div>
+        </div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-year">2021</div>
+        <div class="resume-body">
+          <div class="resume-title">Microsoft Azure Fundamentals (AZ-900)</div>
+          <div class="resume-place">Microsoft</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-cta">
+      <a href="#contact" class="btn btn-outline">Download Full CV →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="container">
+    <p class="section-label">Blog</p>
+    <h2 class="section-title">Thoughts &amp; Writing</h2>
+    <div class="blog-grid">
+      <a href="#" class="blog-card">
+        <div class="blog-card-left">
+          <div class="blog-card-date">Coming Soon</div>
+          <div class="blog-card-title">Getting Started with Retrieval-Augmented Generation (RAG)</div>
+          <div class="blog-card-excerpt">A practical introduction to building RAG pipelines with open-source LLMs.</div>
+        </div>
+        <span class="blog-card-tag">AI</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Let's work together</h2>
+    <p class="contact-intro">
+      Whether you want to discuss a project, a research collaboration, or just want to say hello —
+      feel free to reach out. I'm always happy to connect.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:mike.ashley.cedric@gmail.com" class="contact-link">
+        <span class="contact-icon">✉️</span>
+        <span class="contact-text">mike.ashley.cedric@gmail.com</span>
+        <span class="contact-label">Email</span>
+      </a>
+      <a href="https://www.linkedin.com/in/mike-ashley-cedric/" target="_blank" class="contact-link">
+        <span class="contact-icon">💼</span>
+        <span class="contact-text">linkedin.com/in/mike-ashley-cedric</span>
+        <span class="contact-label">LinkedIn</span>
+      </a>
+      <a href="https://github.com/MikeACedric" target="_blank" class="contact-link">
+        <span class="contact-icon">🐙</span>
+        <span class="contact-text">github.com/MikeACedric</span>
+        <span class="contact-label">GitHub</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Mike Ashley Cedric Gill ·&nbsp; © 2026. All rights reserved.</p>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Close on resize back to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMenu();
+  });
+</script>
+</body>
 </html>
